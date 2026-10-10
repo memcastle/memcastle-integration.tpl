@@ -1,0 +1,18 @@
+format = 1
+
+[integration]
+id = "{{ module_name }}"
+version = "{{ version }}"
+description = "{{ module_description }}"
+
+[compatibility]
+memcastle = "{{ memcastle }}"
+agent = ">=1.18.29"
+
+[agent]
+kind = "opencode"
+entry = "index.js"
+
+[[assets]]
+from = "dist"
+to = "."

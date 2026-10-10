@@ -1,0 +1,8 @@
+[answers]
+module_name = "assistant"
+
+[expect]
+files = ["memcastle-integration.toml", "dist/index.js", "README.md"]
+
+[expect.contains]
+"memcastle-integration.toml" = ['id = "assistant"', 'kind = "opencode"']

@@ -1,0 +1,29 @@
+name = "memcastle-integration"
+description = "A separately installed MemCastle agent integration module"
+strict = true
+
+[questions.module_name]
+type = "string"
+prompt = "Stable integration module ID"
+pattern = "^[a-z0-9]+(-[a-z0-9]+)*$"
+message = "use lowercase words, numbers and hyphens"
+
+[questions.module_description]
+type = "string"
+prompt = "What does this integration do?"
+default = "Connect an agent session to the MemCastle daemon"
+
+[questions.module_path]
+type = "string"
+prompt = "Directory for this integration module"
+default = "."
+
+[questions.version]
+type = "string"
+prompt = "Module version"
+default = "0.1.0"
+
+[questions.memcastle]
+type = "string"
+prompt = "Supported MemCastle versions"
+default = ">=0.4, <0.6"

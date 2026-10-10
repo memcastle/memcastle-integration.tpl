@@ -1,0 +1,7 @@
+[answers]
+module_name = "codex"
+module_path = "modules/codex"
+
+[expect]
+files = ["modules/codex/memcastle-integration.toml", "modules/codex/dist/index.js"]
+absent = ["memcastle-integration.toml"]
