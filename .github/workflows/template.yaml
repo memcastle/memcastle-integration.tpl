@@ -27,5 +27,6 @@ jobs:
           root = pathlib.Path(sys.argv[1])
           manifest = tomllib.loads((root / "memcastle-integration.toml").read_text())
           assert manifest["integration"]["id"] == "standalone-integration"
-          assert (root / manifest["agent"]["entry"]).is_file()
+          assert any((root / asset["from"] / manifest["agent"]["entry"]).is_file()
+                     for asset in manifest["assets"] if asset["to"] == ".")
           PY
