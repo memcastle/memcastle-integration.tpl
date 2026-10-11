@@ -30,3 +30,6 @@ jobs:
           assert any((root / asset["from"] / manifest["agent"]["entry"]).is_file()
                      for asset in manifest["assets"] if asset["to"] == ".")
           PY
+      - name: Test the generated integration without Core source
+        working-directory: ${{ runner.temp }}/standalone-integration
+        run: npm run format:check && npm run lint && npm test && npm run build
