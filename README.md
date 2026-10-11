@@ -8,7 +8,9 @@ git tpl --json questions "$PWD"
 git tpl init "$PWD" ../my-integration --init --answer module_name=my-integration --defaults --strict-answers --json
 ```
 
-After publication, the template URL `https://github.com/memcastle/memcastle-integration.tpl` replaces the local path.
+Use `https://github.com/memcastle/memcastle-integration.tpl` for a project shared beyond this machine;
+GitTPL keeps the source location selected at init and does not replace a local path automatically.
 
 The example module runs only agent-side lifecycle glue; all memory operations belong to MemCastle over HTTP/MCP.
 Adding another agent kind means implementing its installation adapter and using its own manifest, not a mining source.
+`git tpl test` checks standalone and nested renders; template CI checks a standalone manifest and entry.
