@@ -2,7 +2,11 @@
 module_name = "assistant"
 
 [expect]
-files = ["memcastle-integration.toml", "dist/index.js", "README.md"]
+files = ["memcastle-integration.toml", "dist/index.js", "README.md", "scripts/check_format.mjs"]
+absent = ["scripts/check_format.py"]
 
 [expect.contains]
 "memcastle-integration.toml" = ['id = "assistant"', 'kind = "opencode"']
+
+[commands]
+rendered = ["bun run format:check", "bun run lint", "bun test", "bun run build"]
