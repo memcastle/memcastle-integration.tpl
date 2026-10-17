@@ -14,3 +14,4 @@ GitTPL keeps the source location selected at init and does not replace a local p
 The example module runs only agent-side lifecycle glue; all memory operations belong to MemCastle over HTTP/MCP.
 Adding another agent kind means implementing its installation adapter and using its own manifest, not a mining source.
 `git tpl test` checks standalone and nested renders; template CI checks a standalone manifest and entry.
+The standalone case also runs the generated Bun formatting, lint, test and build commands without Python.

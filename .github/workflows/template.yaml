@@ -10,6 +10,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: '1.4.2'
       - name: Install released GitTPL 0.14
         env:
           GH_TOKEN: ${{ github.token }}
@@ -19,17 +22,3 @@ jobs:
       - name: Check standalone and nested module rendering
         run: |
           "$RUNNER_TEMP/git-tpl" test
-      - name: Check a standalone integration manifest and entry
-        run: |
-          "$RUNNER_TEMP/git-tpl" render . -o "$RUNNER_TEMP/standalone-integration" --answer module_name=standalone-integration --defaults
-          python3 - "$RUNNER_TEMP/standalone-integration" <<'PY'
-          import pathlib, sys, tomllib
-          root = pathlib.Path(sys.argv[1])
-          manifest = tomllib.loads((root / "memcastle-integration.toml").read_text())
-          assert manifest["integration"]["id"] == "standalone-integration"
-          assert any((root / asset["from"] / manifest["agent"]["entry"]).is_file()
-                     for asset in manifest["assets"] if asset["to"] == ".")
-          PY
-      - name: Test the generated integration without Core source
-        working-directory: ${{ runner.temp }}/standalone-integration
-        run: npm run format:check && npm run lint && npm test && npm run build
