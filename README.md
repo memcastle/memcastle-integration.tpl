@@ -15,3 +15,5 @@ The example module runs only agent-side lifecycle glue; all memory operations be
 Adding another agent kind means implementing its installation adapter and using its own manifest, not a mining source.
 `git tpl test` checks standalone and nested renders; template CI checks a standalone manifest and entry.
 The standalone case also runs the generated Bun formatting, lint, test and build commands without Python.
+Nested modules render `INTEGRATION.md`, avoiding a collision with a source module's `README.md` when both typed
+modules share an ID and directory; standalone integrations retain their root `README.md`.
