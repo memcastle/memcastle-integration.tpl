@@ -6,7 +6,7 @@ files = ["memcastle-integration.toml", "dist/index.js", "README.md", "scripts/ch
 absent = ["scripts/check_format.py"]
 
 [expect.contains]
-"memcastle-integration.toml" = ['id = "assistant"', 'kind = "opencode"']
+"memcastle-integration.toml" = ['id = "assistant"', 'kind = "opencode"', 'memcastle = ">=0.5, <0.6"']
 
 [commands]
 rendered = ["bun run format:check", "bun run lint", "bun test", "bun run build"]

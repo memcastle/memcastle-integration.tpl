@@ -5,3 +5,6 @@ module_path = "modules/codex"
 [expect]
 files = ["modules/codex/memcastle-integration.toml", "modules/codex/dist/index.js", "modules/codex/scripts/check_format.mjs"]
 absent = ["memcastle-integration.toml", "modules/codex/scripts/check_format.py"]
+
+[expect.contains]
+"modules/codex/memcastle-integration.toml" = ['memcastle = ">=0.5, <0.6"']
